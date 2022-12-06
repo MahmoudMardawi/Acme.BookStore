@@ -10,11 +10,10 @@ namespace Acme.BookStore.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.AddColumn<Guid>(
-                name: "AuthorId",
-                table: "AppBooks",
-                type: "uniqueidentifier",
-                nullable: false,
-                defaultValue: new Guid("00000000-0000-0000-0000-000000000000"));
+            name: "AuthorId",
+            table: "AppBooks",
+            nullable: false,
+            defaultValue: new Guid("00000000-0000-0000-0000-000000000000"));
 
             migrationBuilder.CreateIndex(
                 name: "IX_AppBooks_AuthorId",
@@ -28,6 +27,7 @@ namespace Acme.BookStore.Migrations
                 principalTable: "AppAuthors",
                 principalColumn: "Id",
                 onDelete: ReferentialAction.Cascade);
+
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
