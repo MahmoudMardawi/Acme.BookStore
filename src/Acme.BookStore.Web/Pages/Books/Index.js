@@ -19,16 +19,12 @@
                             [
                                 {
                                     text: l('Edit'),
-                                    visible: abp.auth.isGranted('BookStore.Books.Edit'), //CHECK for the PERMISSION
-
                                     action: function (data) {
                                         editModal.open({ id: data.record.id });
                                     }
                                 },
                                 {
                                     text: l('Delete'),
-                                    visible: abp.auth.isGranted('BookStore.Books.Delete')
-
                                     confirmMessage: function (data) {
                                         return l(
                                             'BookDeletionConfirmationMessage',
@@ -54,11 +50,6 @@
                     data: "name"
                 },
                 {
-                    title: l('Author'),
-                    data: "authorName"
-                },
-
-                {
                     title: l('Type'),
                     data: "type",
                     render: function (data) {
@@ -81,6 +72,8 @@
             ]
         })
     );
+
+    var createModal = new abp.ModalManager(abp.appPath + 'Books/CreateModal');
 
     createModal.onResult(function () {
         dataTable.ajax.reload();
